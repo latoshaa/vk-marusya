@@ -1,0 +1,37 @@
+// Цвета
+$primary-color: #7B61FF;
+$secondary-color: #232323;
+$background-color: #000000;
+$text-primary: #FFFFFF;
+$text-secondary: #B3B3B3;
+$error-color: #FF0000;
+$accent-color: #FFC107;
+
+// Градиент для фона
+$background-gradient: linear-gradient(to bottom, #67A5EB, #A393F5, white), linear-gradient(to bottom, #272424, #413f3f);
+
+// Размеры
+$container-max-width: 1200px;
+$border-radius: 8px;
+$border-radius-large: 16px;
+
+// Шрифты
+$font-family: "Play", sans-serif;
+$font-size-base: 16px;
+$font-size-small: 14px;
+$font-size-large: 18px;
+$font-size-xlarge: 24px;
+$font-size-xxlarge: 32px;
+
+// Отступы
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+$spacing-xxl: 48px;
+
+// Анимации
+$transition-fast: 0.2s ease;
+$transition-normal: 0.3s ease;
+
