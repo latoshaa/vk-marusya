@@ -1,9 +1,10 @@
 import { FC } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
-import VkIcon from "../../assets/vk.svg";
-import YoutubeIcon from "../../assets/youtube.svg";
-import OkIcon from "../../assets/ok.svg";
-import TelegramIcon from "../../assets/telegram.svg";
+import VkIcon from "../../shared/assets/vk.svg";
+import YoutubeIcon from "../../shared/assets/youtube.svg";
+import OkIcon from "../../shared/assets/ok.svg";
+import TelegramIcon from "../../shared/assets/telegram.svg";
 
 export const Footer: FC = () => {
   const socialLinks = [
@@ -31,30 +32,26 @@ export const Footer: FC = () => {
 
   return (
     <footer className={styles.footer}>
-        <div className={styles.container}>
-            <div className={styles.socialLinks}>
-                {socialLinks.map((social) => (
-                    <a
-                    key={social.name}
-                    href={social.url}
-                    className={styles.socialLinks}
-                    target="_blank"
-                    >
-                        <img
-                        src={social.icon}
-                        alt={social.name}
-                        className={styles.socialIcon}
-                        />
-
-                    </a>
-                ))}
-
-            </div>
-
+      <div className={styles.container}>
+        <div className={styles.socialLinks}>
+          {socialLinks.map((social) => (
+            <Link
+              key={social.name}
+              to={social.url}
+              className={styles.socialLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src={social.icon}
+                alt={social.name}
+                className={styles.socialIcon}
+              />
+            </Link>
+          ))}
         </div>
-
+      </div>
     </footer>
-  )
-
+  );
 };
 

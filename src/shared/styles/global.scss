@@ -2,66 +2,78 @@
 @import './variables';
 
 * {
-    font-family: $font-family;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: $font-family;
-    font-size: $font-size-base;
-    color: $text-primary;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  font-family: $font-family;
+  font-size: $font-size-base;
+  color: $text-primary;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 #root {
-    background-image: linear-gradient(to bottom, #67A5EB, #A393F5, white), linear-gradient(to bottom, #272424, #413f3f);
-    background-blend-mode: multiply;
-    min-height: 100vh;
+  background-image: linear-gradient(to bottom, #67A5EB, #A393F5, white), linear-gradient(to bottom, #272424, #413f3f);
+  background-blend-mode: multiply;
+  min-height: 100vh;
 }
 
 .app {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 main {
-    flex: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 a {
-    color: inherit;
-    text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
 button {
-    font-family: inherit;
-    cursor: pointer;
-    border: none;
-    outline: none;
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
 }
 
 input,
 textarea {
-    font-family: inherit;
-    outline: none;
+  font-family: inherit;
+  outline: none;
 }
 
 img {
-    max-width: 100%;
-    display: block;
+  max-width: 100%;
+  display: block;
 }
 
 .container {
-    max-width: $container-max-width;
-    margin: 0 auto;
-    padding: 0 $spacing-lg;
-    
-    @media (max-width: 768px) {
-        padding: 0 $spacing-md;
-    }
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $spacing-lg;
+  
+  @media (max-width: 768px) {
+    padding: 0 $spacing-md;
+  }
+}
+
+.error-boundary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  padding: $spacing-xl;
 }

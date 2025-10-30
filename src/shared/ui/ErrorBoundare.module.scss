@@ -1,38 +1,38 @@
-.homepage {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.errorContainer {
+.errorBoundary {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 50vh;
+  min-height: 100vh;
   text-align: center;
   padding: 40px;
-  
+
   h2 {
     color: #ff4444;
     margin-bottom: 16px;
   }
-  
+
   p {
-    margin-bottom: 24px;
+    margin-bottom: 16px;
     color: rgba(255, 255, 255, 0.8);
   }
 }
 
+.details {
+  margin-bottom: 24px;
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 500px;
+}
+
 .retryButton {
   padding: 12px 24px;
-  background: #7B61FF;
+  background: #7b61ff;
   color: white;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  
+
   &:hover {
-    background: lighten(#7B61FF, 10%);
+    background: lighten(#7b61ff, 10%);
   }
 }

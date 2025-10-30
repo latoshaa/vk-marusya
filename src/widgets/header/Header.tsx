@@ -1,28 +1,45 @@
 import { FC } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import styles from './Header.module.scss';
-import MarusyaLogo from '../../assets/marusya-white.svg';
-import SearchIcon from '../../assets/search.svg';
+import MarusyaLogo from "../../shared/assets/marusya-white.svg";
+import SearchIcon from "../../shared/assets/search.svg";
 
 export const Header: FC = () => {
+  const location = useLocation();
+
   return (
     <header className={styles.header}>
       <div className={styles.wrapper}>
         <div className={styles.logo}>
-          <img 
-            src={MarusyaLogo} 
-            alt="Маруся" 
-            className={styles.logoImage}
-          />
+          <Link to="/">
+            <img 
+              src={MarusyaLogo} 
+              alt="Маруся" 
+              className={styles.logoImage}
+            />
+          </Link>
         </div>
 
         <div className={styles.centerWrapper}>
           <nav className={styles.nav}>
-            <a href="/" className={`${styles.navLink} ${styles.active}`}>
-              Главная
-            </a>
-            <a href="/genres" className={styles.navLink}>
-              Жанры
-            </a>
+            <ul className={styles.navList}>
+              <li>
+                <Link 
+                  to="/" 
+                  className={`${styles.navLink} ${location.pathname === '/' ? styles.active : ''}`}
+                >
+                  Главная
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/genres" 
+                  className={`${styles.navLink} ${location.pathname === '/genres' ? styles.active : ''}`}
+                >
+                  Жанры
+                </Link>
+              </li>
+            </ul>
           </nav>
 
           <div className={styles.searchInput}>
@@ -39,9 +56,9 @@ export const Header: FC = () => {
           </div>
         </div>
 
-        <a href="/login" className={styles.navLink}>
+        <Link to="/login" className={styles.navLink}>
           Войти
-        </a>
+        </Link>
       </div>
     </header>
   );

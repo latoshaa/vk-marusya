@@ -62,10 +62,10 @@
   padding: 0px;
   gap: 40px;
 
-  width: 907.67px;
+  width: 100%;
   height: 48px;
 
-  flex: none;
+  flex: 1;
   order: 1;
   flex-grow: 1;
 }
@@ -86,12 +86,12 @@
 
   height: 48px;
 
-  font-family: 'Play';
+  font-family: "Play";
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
   line-height: 32px;
-  color: #FFFFFF;
+  color: #ffffff;
 
   text-decoration: none;
   background: none;
@@ -103,7 +103,7 @@
   flex-grow: 0;
 
   &.active {
-    border-bottom: 1.5px solid #DC5DFC;
+    border-bottom: 1.5px solid #dc5dfc;
   }
 }
 
@@ -114,10 +114,11 @@
   padding: 16px;
   gap: 12px;
 
-  width: 655.67px;
+  width: 100%;
+  max-width: 600px;
   height: 48px;
 
-  background: #393B3C;
+  background: #393b3c;
   border-radius: 8px;
 
   flex: none;
@@ -141,10 +142,10 @@
 }
 
 .searchField {
-  width: 587.67px;
+  width: 100%;
   height: 24px;
 
-  font-family: 'Play';
+  font-family: "Play";
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -162,4 +163,14 @@
   &::placeholder {
     color: rgba(255, 255, 255, 0.5);
   }
+}
+
+.navList {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
