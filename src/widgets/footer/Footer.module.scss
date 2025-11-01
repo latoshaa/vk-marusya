@@ -1,0 +1,21 @@
+@import "../../shared/styles/variables";
+
+.container {
+  margin: 0 auto;
+  padding: 24px 80px;
+  max-width: 1280px;
+}
+
+.socialLinks {
+  margin: 0;
+  display: flex;
+  justify-self: flex-end;
+  list-style: none;
+  padding: 0;
+  margin-right: 24px;
+}
+
+.socialIcon {
+  width: 36px;
+  height: 36px;
+}

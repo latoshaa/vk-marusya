@@ -1,0 +1,38 @@
+.homepage {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  text-align: center;
+  padding: 40px;
+  
+  h2 {
+    color: #ff4444;
+    margin-bottom: 16px;
+  }
+  
+  p {
+    margin-bottom: 24px;
+    color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+.retryButton {
+  padding: 12px 24px;
+  background: #7B61FF;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  
+  &:hover {
+    background: lighten(#7B61FF, 10%);
+  }
+}
