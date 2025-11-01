@@ -1,6 +1,7 @@
 import { FC, useState, useEffect } from 'react';
 import { Hero } from '../../widgets/hero';
 import { MovieGrid } from '../../widgets/movie-grid';
+import { ErrorComponent } from './ui/ErrorComponent';
 import { Movie } from '../../shared/types/movie';
 import { fetchTopMovies, fetchRandomMovie } from '../../shared/api/movieApi';
 import styles from './HomePage.module.scss';
@@ -10,6 +11,12 @@ export const HomePage: FC = () => {
   const [topMovies, setTopMovies] = useState<Movie[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const handleRetry = () => {
+    setError(null);
+    loadTopMovies();
+    loadRandomMovie();
+  };
 
   const loadTopMovies = async () => {
     setIsLoading(true);
@@ -50,22 +57,7 @@ export const HomePage: FC = () => {
   }, []);
 
   if (error) {
-    return (
-      <div className={styles.errorContainer}>
-        <h2>Произошла ошибка</h2>
-        <p>{error}</p>
-        <button 
-          className={styles.retryButton}
-          onClick={() => {
-            setError(null);
-            loadTopMovies();
-            loadRandomMovie();
-          }}
-        >
-          Попробовать снова
-        </button>
-      </div>
-    );
+    return <ErrorComponent error={error} onRetry={handleRetry} />;
   }
 
   return (

@@ -8,12 +8,15 @@ interface MovieCardProps {
   onClick: (movieId: number) => void;
 }
 
-export const MovieCard: FC<MovieCardProps> = ({ movie, number, onClick }) => {
-  const handleClick = useCallback(() => {
-    onClick(movie.id);
-  }, [movie.id, onClick]);
+const DOUBLE_DIGIT_THRESHOLD = 10;
 
-  const isDoubleDigit = number >= 10;
+export const MovieCard: FC<MovieCardProps> = ({ movie, number, onClick }) => {
+  const handleClick = () => {
+    onClick(movie.id);
+  };
+
+  const isDoubleDigit = number >= DOUBLE_DIGIT_THRESHOLD;
+
 
   return (
     <div className={styles.movieCard} onClick={handleClick}>
