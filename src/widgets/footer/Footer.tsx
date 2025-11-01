@@ -1,10 +1,10 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
-import VkIcon from "../../shared/assets/vk.svg";
-import YoutubeIcon from "../../shared/assets/youtube.svg";
-import OkIcon from "../../shared/assets/ok.svg";
-import TelegramIcon from "../../shared/assets/telegram.svg";
+import VkIcon from "@shared/assets/icons/vk.svg";
+import YoutubeIcon from "@shared/assets/icons/youtube.svg";
+import OkIcon from "@shared/assets/icons/ok.svg";
+import TelegramIcon from "@shared/assets/icons/telegram.svg";
 
 export const Footer: FC = () => {
   const socialLinks = [

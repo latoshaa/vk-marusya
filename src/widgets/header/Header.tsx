@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styles from './Header.module.scss';
-import MarusyaLogo from "../../shared/assets/marusya-white.svg";
-import SearchIcon from "../../shared/assets/search.svg";
+import MarusyaLogo from "@shared/assets/icons/marusya-white.svg";
+import SearchIcon from "@shared/assets/icons/search.svg";
 
 export const Header: FC = () => {
   const location = useLocation();

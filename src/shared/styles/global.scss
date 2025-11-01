@@ -1,5 +1,5 @@
-@import './fonts';
-@import './variables';
+@use './fonts';
+@use './variables' as *;
 
 * {
   margin: 0;
@@ -14,11 +14,12 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: linear-gradient(to bottom, #67A5EB, #A393F5, white), linear-gradient(to bottom, #272424, #413f3f);
+  background-blend-mode: multiply;
+  min-height: 100vh;
 }
 
 #root {
-  background-image: linear-gradient(to bottom, #67A5EB, #A393F5, white), linear-gradient(to bottom, #272424, #413f3f);
-  background-blend-mode: multiply;
   min-height: 100vh;
 }
 

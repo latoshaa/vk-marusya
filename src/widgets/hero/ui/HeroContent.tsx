@@ -2,10 +2,10 @@ import { FC, useState } from 'react';
 import { Movie } from '../../../shared/types/movie';
 import { MIN_RATING, MINUTES_IN_HOUR } from '../constants';
 import styles from '../Hero.module.scss';
-import HeartIcon from "../../../shared/assets/heart.svg";
-import HeartActiveIcon from "../../../shared/assets/heartActive.svg";
-import RandomIcon from "../../../shared/assets/random.svg";
-import StarIcon from "../../../shared/assets/star.svg";
+import HeartIcon from "@shared/assets/icons/heart.svg";
+import HeartActiveIcon from "@shared/assets/icons/heartActive.svg";
+import RandomIcon from "@shared/assets/icons/random.svg";
+import StarIcon from "@shared/assets/icons/star.svg";
 
 
 interface HeroContentProps {

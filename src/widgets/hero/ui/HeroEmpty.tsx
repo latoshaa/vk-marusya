@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import styles from '../Hero.module.scss';
-import RandomIcon from "../../../shared/assets/random.svg";
+import RandomIcon from "@shared/assets/icons/random.svg";
 
 interface HeroEmptyProps {
   onGetRandomMovie: () => void;
