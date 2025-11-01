@@ -1,10 +1,10 @@
-import { FC, useCallback } from 'react';
+import { FC } from 'react';
 import styles from './Button.module.scss';
 
 interface ButtonProps {
   children: React.ReactNode;
   onClick?: () => void;
-  variant?: 'primary' | 'secondary' | 'outline' | 'icon';
+  variant?: 'primary' | 'secondary' | 'outline';
   type?: 'button' | 'submit';
   disabled?: boolean;
   fullWidth?: boolean;
@@ -20,11 +20,11 @@ export const Button: FC<ButtonProps> = ({
   fullWidth = false,
   className = '',
 }) => {
-  const handleClick = useCallback(() => {
+  const handleClick = () => {
     if (onClick && !disabled) {
       onClick();
     }
-  }, [onClick, disabled]);
+  };
 
   const buttonClass = [
     styles.button,
