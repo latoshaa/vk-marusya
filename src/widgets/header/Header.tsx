@@ -1,43 +1,41 @@
 import { FC } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styles from './Header.module.scss';
 import MarusyaLogo from "@shared/assets/icons/marusya-white.svg";
 import SearchIcon from "@shared/assets/icons/search.svg";
 
 export const Header: FC = () => {
-  const location = useLocation();
-
   return (
     <header className={styles.header}>
       <div className={styles.wrapper}>
         <div className={styles.logo}>
-          <Link to="/">
+          <NavLink to="/">
             <img 
               src={MarusyaLogo} 
               alt="Маруся" 
               className={styles.logoImage}
             />
-          </Link>
+          </NavLink>
         </div>
 
         <div className={styles.centerWrapper}>
           <nav className={styles.nav}>
             <ul className={styles.navList}>
               <li>
-                <Link 
+                <NavLink 
                   to="/" 
                   className={`${styles.navLink} ${location.pathname === '/' ? styles.active : ''}`}
                 >
                   Главная
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link 
+                <NavLink 
                   to="/genres" 
                   className={`${styles.navLink} ${location.pathname === '/genres' ? styles.active : ''}`}
                 >
                   Жанры
-                </Link>
+                </NavLink>
               </li>
             </ul>
           </nav>
@@ -56,9 +54,9 @@ export const Header: FC = () => {
           </div>
         </div>
 
-        <Link to="/login" className={`${styles.navLink} ${styles.loginLink}`}>
+        <NavLink to="/login" className={`${styles.navLink} ${styles.loginLink}`}>
           Войти
-        </Link>
+        </NavLink>
       </div>
     </header>
   );
