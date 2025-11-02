@@ -56,7 +56,7 @@ export const Header: FC = () => {
           </div>
         </div>
 
-        <Link to="/login" className={styles.navLink}>
+        <Link to="/login" className={`${styles.navLink} ${styles.loginLink}`}>
           Войти
         </Link>
       </div>
