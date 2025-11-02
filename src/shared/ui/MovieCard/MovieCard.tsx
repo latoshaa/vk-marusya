@@ -1,5 +1,5 @@
-import { FC, useCallback } from "react";
-import { Movie } from "../../../components/movie/model/types";
+import { FC } from "react";
+import { Movie } from "@shared/types/movie";
 import styles from "./MovieCard.module.scss";
 
 interface MovieCardProps {

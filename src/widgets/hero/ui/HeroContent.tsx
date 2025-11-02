@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import { Movie } from '../../../shared/types/movie';
+import { Movie } from '@shared/types/movie';
 import { MIN_RATING, MINUTES_IN_HOUR } from '../constants';
 import styles from '../Hero.module.scss';
 import HeartIcon from "@shared/assets/icons/heart.svg";

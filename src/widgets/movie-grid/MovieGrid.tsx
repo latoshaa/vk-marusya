@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { Movie } from '../../shared/types/movie';
-import { MovieCard } from '../../shared/ui/MovieCard';
+import { Movie } from '@shared/types/movie';
+import { MovieCard } from '@shared/ui/MovieCard';
 import styles from './MovieGrid.module.scss';
 
 interface MovieGridProps {

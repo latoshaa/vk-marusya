@@ -1,4 +1,4 @@
-@import '../../shared/styles/variables';
+@use '@shared/styles/variables' as *;
 
 .hero {
   padding: 80px 0;

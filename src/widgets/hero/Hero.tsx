@@ -1,5 +1,5 @@
-import { FC, useState } from 'react';
-import { Movie } from '../../components/movie/model/types';
+import { FC } from 'react';
+import { Movie } from '@shared/types/movie';
 import { HeroContent } from './ui/HeroContent';
 import { HeroEmpty } from './ui/HeroEmpty';
 import styles from './Hero.module.scss';

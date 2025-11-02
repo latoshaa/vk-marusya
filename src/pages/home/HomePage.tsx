@@ -1,9 +1,9 @@
 import { FC, useState, useEffect } from 'react';
-import { Hero } from '../../widgets/hero';
-import { MovieGrid } from '../../widgets/movie-grid';
+import { Hero } from '@widgets/hero';
+import { MovieGrid } from '@widgets/movie-grid';
 import { ErrorComponent } from './ui/ErrorComponent';
-import { Movie } from '../../shared/types/movie';
-import { fetchTopMovies, fetchRandomMovie } from '../../shared/api/movieApi';
+import { Movie } from '@shared/types/movie';
+import { fetchTopMovies, fetchRandomMovie } from '@shared/api/movieApi';
 import styles from './HomePage.module.scss';
 
 export const HomePage: FC = () => {

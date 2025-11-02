@@ -1,5 +1,5 @@
 import { api } from './config';
-import { Movie } from '../types/movie';
+import { Movie } from '@shared/types/movie';
 
 export const fetchTopMovies = async (): Promise<Movie[]> => {
   const response = await api.get('/movie/top10');
