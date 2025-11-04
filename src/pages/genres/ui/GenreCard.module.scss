@@ -1,0 +1,67 @@
+@use '@shared/styles/variables' as *;
+
+.genreCard {
+  box-sizing: border-box;
+  width: 290px;
+  height: 304px;
+  background: #0A0B0B;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0px 0px 80px rgba(255, 255, 255, 0.33);
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+  transition: all $transition-normal;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  flex: none;
+  
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0px 0px 100px rgba(255, 255, 255, 0.5);
+  }
+}
+
+.imageContainer {
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 27.63%;
+  width: 100%;
+  height: 72.37%; // 100% - 27.63%
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.title {
+  position: absolute;
+  width: 78px;
+  height: 32px;
+  left: calc(50% - 78px/2 - 1px);
+  bottom: 30px;
+  font-family: $font-family;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.overlay {
+  display: none;
+}
+
+.movieCount {
+  display: none;
+}
