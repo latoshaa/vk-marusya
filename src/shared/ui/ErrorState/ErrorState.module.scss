@@ -1,0 +1,33 @@
+@use '@shared/styles/variables' as *;
+
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  text-align: center;
+  
+  h2 {
+    color: $error-color;
+    margin-bottom: 16px;
+  }
+  
+  p {
+    margin-bottom: 24px;
+    color: rgba($text-primary, 0.8);
+  }
+}
+
+.retryButton {
+  padding: 12px 24px;
+  background: $primary-color;
+  color: $text-primary;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  
+  &:hover {
+    background: lighten($primary-color, 10%);
+  }
+}

@@ -27,26 +27,6 @@ export const GenresPage: FC = () => {
     loadGenres();
   }, []);
 
-  if (error) {
-    return (
-      <div className={styles.errorContainer}>
-        <h2>Произошла ошибка</h2>
-        <p>{error}</p>
-        <button onClick={loadGenres} className={styles.retryButton}>
-          Попробовать снова
-        </button>
-      </div>
-    );
-  }
-
-  if (isLoading) {
-    return (
-      <div className={styles.loadingContainer}>
-        <div className={styles.loadingSpinner}></div>
-        <p>Загружаем жанры...</p>
-      </div>
-    );
-  }
 
   return (
     <div className={styles.genresPage}>
