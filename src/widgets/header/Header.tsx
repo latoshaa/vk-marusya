@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import styles from './Header.module.scss';
 import MarusyaLogo from "@shared/assets/icons/marusya-white.svg";
 import SearchIcon from "@shared/assets/icons/search.svg";
@@ -9,13 +9,13 @@ export const Header: FC = () => {
     <header className={styles.header}>
       <div className={styles.wrapper}>
         <div className={styles.logo}>
-          <NavLink to="/">
+          <Link to="/">
             <img 
               src={MarusyaLogo} 
               alt="Маруся" 
               className={styles.logoImage}
             />
-          </NavLink>
+          </Link>
         </div>
 
         <div className={styles.centerWrapper}>
@@ -54,9 +54,9 @@ export const Header: FC = () => {
           </div>
         </div>
 
-        <NavLink to="/login" className={`${styles.navLink} ${styles.loginLink}`}>
+        <Link to="/login" className={`${styles.navLink} ${styles.loginLink}`}>
           Войти
-        </NavLink>
+        </Link>
       </div>
     </header>
   );

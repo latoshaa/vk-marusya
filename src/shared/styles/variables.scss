@@ -6,6 +6,8 @@ $text-primary: #FFFFFF;
 $text-secondary: #B3B3B3;
 $error-color: #FF0000;
 $accent-color: #FFC107;
+$success-color: #308e21;
+$warning-color: #ffc107;
 
 // Градиент для фона
 $background-gradient: linear-gradient(to bottom, #67A5EB, #A393F5, white), linear-gradient(to bottom, #272424, #413f3f);
@@ -34,4 +36,11 @@ $spacing-xxl: 48px;
 // Анимации
 $transition-fast: 0.2s ease;
 $transition-normal: 0.3s ease;
+$disabled-opacity: 0.5;
+
+// Текст
+$text-h1: 48px;
+$line-height-h1: 56px;
+$text-h2: 40px;
+$line-height-h2: 48px;
 
