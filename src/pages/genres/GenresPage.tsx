@@ -1,32 +1,20 @@
-import { FC, useState, useEffect } from 'react';
+import { FC } from 'react';
 import { GenresGrid } from './ui/GenresGrid';
-import { Genre } from '@shared/types/genre';
-import { fetchGenres } from '@shared/api/genreApi';
+import { LoadingSpinner } from '@shared/ui/LoadingSpinner';
+import { ErrorState } from '@shared/ui/ErrorState';
+import { useGenres } from './hooks/useGenres';
 import styles from './GenresPage.module.scss';
 
 export const GenresPage: FC = () => {
-  const [genres, setGenres] = useState<Genre[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const { genres, isLoading, error, refetch } = useGenres();
 
-  const loadGenres = async () => {
-    try {
-      setIsLoading(true);
-      setError(null);
-      const genresData = await fetchGenres();
-      setGenres(genresData);
-    } catch (err) {
-      setError('Не удалось загрузить список жанров');
-      console.error('Ошибка загрузки жанров:', err);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  if (error) {
+    return <ErrorState error={error} onRetry={refetch} />;
+  }
 
-  useEffect(() => {
-    loadGenres();
-  }, []);
-
+  if (isLoading) {
+    return <LoadingSpinner message="Загружаем жанры..." />;
+  }
 
   return (
     <div className={styles.genresPage}>

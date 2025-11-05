@@ -1,12 +1,12 @@
 import { FC } from "react";
 import styles from './ErrorState.module.scss';
 
-interface ErorStateProps {
+interface ErrorStateProps {
     error: string;
     onRetry?: () => void;
 }
 
-export const ErrorState: FC<ErorStateProps> = ({ error, onRetry }) => {
+export const ErrorState: FC<ErrorStateProps> = ({ error, onRetry }) => {
     return (
         <div className={styles.errorContainer}>
             <h2>Ошибочка..</h2>
