@@ -1,16 +1,8 @@
 .genresGrid {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  width: 100%;
-  align-items: center;
-}
-
-.gridRow {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(4, 290px);
   gap: 24px;
-  width: 100%;
+  justify-content: center;
   
   @media (max-width: 1200px) {
     flex-wrap: wrap;

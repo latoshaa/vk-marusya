@@ -76,7 +76,6 @@ export const HomePage: FC = () => {
       <Hero
         movie={randomMovie}
         onGetRandomMovie={handleGetRandomMovie}
-        isLoading={false}
       />
       <MovieGrid
         movies={topMovies}
