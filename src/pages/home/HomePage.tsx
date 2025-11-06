@@ -2,6 +2,7 @@ import { FC, useState, useEffect } from 'react';
 import { Hero } from '@widgets/hero';
 import { MovieGrid } from '@widgets/movie-grid';
 import { ErrorComponent } from './ui/ErrorComponent';
+import { LoadingSpinner } from '@shared/ui/LoadingSpinner';
 import { Movie } from '@shared/types/movie';
 import { fetchTopMovies, fetchRandomMovie } from '@shared/api/movieApi';
 import styles from './HomePage.module.scss';
@@ -9,31 +10,27 @@ import styles from './HomePage.module.scss';
 export const HomePage: FC = () => {
   const [randomMovie, setRandomMovie] = useState<Movie | null>(null);
   const [topMovies, setTopMovies] = useState<Movie[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   const handleRetry = () => {
     setError(null);
+    setIsLoading(true);
     loadTopMovies();
     loadRandomMovie();
   };
 
   const loadTopMovies = async () => {
-    setIsLoading(true);
-    setError(null);
     try {
       const movies = await fetchTopMovies();
       setTopMovies(movies);
     } catch (err) {
       setError('Не удалось загрузить топ фильмы. Попробуйте обновить страницу.');
       console.error('Ошибка загрузки топ фильмов:', err);
-    } finally {
-      setIsLoading(false);
     }
   };
 
   const loadRandomMovie = async () => {
-    setError(null);
     try {
       const movie = await fetchRandomMovie();
       setRandomMovie(movie);
@@ -52,12 +49,26 @@ export const HomePage: FC = () => {
   };
 
   useEffect(() => {
-    loadTopMovies();
-    loadRandomMovie();
+    const loadData = async () => {
+      setIsLoading(true);
+      setError(null);
+      try {
+        await Promise.all([loadTopMovies(), loadRandomMovie()]);
+      } catch (err) {
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadData();
   }, []);
 
   if (error) {
     return <ErrorComponent error={error} onRetry={handleRetry} />;
+  }
+
+  if (isLoading) {
+    return <LoadingSpinner message="Загружаем фильмы..." />;
   }
 
   return (
@@ -65,7 +76,7 @@ export const HomePage: FC = () => {
       <Hero
         movie={randomMovie}
         onGetRandomMovie={handleGetRandomMovie}
-        isLoading={isLoading}
+        isLoading={false}
       />
       <MovieGrid
         movies={topMovies}
