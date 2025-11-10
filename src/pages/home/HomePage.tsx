@@ -2,6 +2,7 @@ import { FC, useState, useEffect } from 'react';
 import { Hero } from '@widgets/hero';
 import { MovieGrid } from '@widgets/movie-grid';
 import { ErrorComponent } from './ui/ErrorComponent';
+import { LoadingSpinner } from '@shared/ui/LoadingSpinner';
 import { Movie } from '@shared/types/movie';
 import { fetchTopMovies, fetchRandomMovie } from '@shared/api/movieApi';
 import styles from './HomePage.module.scss';
@@ -65,13 +66,16 @@ export const HomePage: FC = () => {
       <Hero
         movie={randomMovie}
         onGetRandomMovie={handleGetRandomMovie}
-        isLoading={isLoading}
       />
-      <MovieGrid
-        movies={topMovies}
-        onMovieClick={handleMovieClick}
-        title="Топ 10 фильмов"
-      />
+      {isLoading ? (
+        <LoadingSpinner message="Загружаем фильмы..." />
+      ) : (
+        <MovieGrid
+          movies={topMovies}
+          onMovieClick={handleMovieClick}
+          title="Топ 10 фильмов"
+        />
+      )}
     </div>
   );
 };

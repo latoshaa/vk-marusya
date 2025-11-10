@@ -1,0 +1,10 @@
+.genresGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 290px);
+  gap: 24px;
+  justify-content: center;
+  
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(2, 290px);
+  }
+}

@@ -1,0 +1,21 @@
+@use '@shared/styles/variables' as *;
+
+.genresPage {
+  flex: 1;
+  padding: 40px 0;
+}
+
+.header {
+  text-align: left;
+  margin-bottom: 40px;
+}
+
+.title {
+  font-size: $text-h1;
+  line-height: $line-height-h1;
+  color: $text-primary;
+  margin: 0;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
