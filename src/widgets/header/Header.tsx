@@ -24,7 +24,7 @@ export const Header: FC = () => {
               <li>
                 <NavLink 
                   to="/" 
-                  className={`${styles.navLink} ${location.pathname === '/' ? styles.active : ''}`}
+                  className={({ isActive }) => `${styles.navLink} ${isActive ? styles.active : ''}`}
                 >
                   Главная
                 </NavLink>
@@ -32,7 +32,7 @@ export const Header: FC = () => {
               <li>
                 <NavLink 
                   to="/genres" 
-                  className={`${styles.navLink} ${location.pathname === '/genres' ? styles.active : ''}`}
+                  className={({ isActive }) => `${styles.navLink} ${isActive ? styles.active : ''}`}
                 >
                   Жанры
                 </NavLink>

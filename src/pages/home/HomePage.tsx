@@ -10,27 +10,31 @@ import styles from './HomePage.module.scss';
 export const HomePage: FC = () => {
   const [randomMovie, setRandomMovie] = useState<Movie | null>(null);
   const [topMovies, setTopMovies] = useState<Movie[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const handleRetry = () => {
     setError(null);
-    setIsLoading(true);
     loadTopMovies();
     loadRandomMovie();
   };
 
   const loadTopMovies = async () => {
+    setIsLoading(true);
+    setError(null);
     try {
       const movies = await fetchTopMovies();
       setTopMovies(movies);
     } catch (err) {
       setError('Не удалось загрузить топ фильмы. Попробуйте обновить страницу.');
       console.error('Ошибка загрузки топ фильмов:', err);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const loadRandomMovie = async () => {
+    setError(null);
     try {
       const movie = await fetchRandomMovie();
       setRandomMovie(movie);
@@ -49,26 +53,12 @@ export const HomePage: FC = () => {
   };
 
   useEffect(() => {
-    const loadData = async () => {
-      setIsLoading(true);
-      setError(null);
-      try {
-        await Promise.all([loadTopMovies(), loadRandomMovie()]);
-      } catch (err) {
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    loadData();
+    loadTopMovies();
+    loadRandomMovie();
   }, []);
 
   if (error) {
     return <ErrorComponent error={error} onRetry={handleRetry} />;
-  }
-
-  if (isLoading) {
-    return <LoadingSpinner message="Загружаем фильмы..." />;
   }
 
   return (
@@ -77,11 +67,15 @@ export const HomePage: FC = () => {
         movie={randomMovie}
         onGetRandomMovie={handleGetRandomMovie}
       />
-      <MovieGrid
-        movies={topMovies}
-        onMovieClick={handleMovieClick}
-        title="Топ 10 фильмов"
-      />
+      {isLoading ? (
+        <LoadingSpinner message="Загружаем фильмы..." />
+      ) : (
+        <MovieGrid
+          movies={topMovies}
+          onMovieClick={handleMovieClick}
+          title="Топ 10 фильмов"
+        />
+      )}
     </div>
   );
 };

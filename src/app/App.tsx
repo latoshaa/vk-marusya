@@ -16,14 +16,12 @@ function App() {
           <Header />
           <main className="main-container">
             <div className="page-container">
-              <Suspense fallback={<LoadingSpinner />}>
               <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/genres" element={<GenresPage />} />
                 <Route path="/genres/:id" element={<div>Страница жанра</div>} />
                 <Route path="/movie/:id" element={<div>Страница фильма</div>} />
               </Routes>
-              </Suspense>
             </div>
           </main>
           <Footer />

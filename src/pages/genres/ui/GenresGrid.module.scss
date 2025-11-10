@@ -5,6 +5,6 @@
   justify-content: center;
   
   @media (max-width: 1200px) {
-    flex-wrap: wrap;
+    grid-template-columns: repeat(2, 290px);
   }
 }
