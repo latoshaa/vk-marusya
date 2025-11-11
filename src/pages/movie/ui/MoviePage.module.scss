@@ -1,0 +1,209 @@
+@use '@shared/styles/variables' as *;
+
+.moviePage {
+  flex: 1;
+  padding: $spacing-xl 0;
+}
+
+.movieContainer {
+  display: grid;
+  grid-template-columns: 1fr 680px;
+  gap: $spacing-xxl;
+  align-items: start;
+}
+
+.posterSection {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.poster {
+  width: 680px;
+  height: 552px;
+  border-radius: $border-radius-large;
+  object-fit: cover;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.infoSection {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl;
+}
+
+.titleContainer {
+  width: 600px;
+  height: 356px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.ratingRow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-lg;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-xs $spacing-md;
+  background: $success-color;
+  border-radius: $border-radius-large;
+  font-size: $font-size-large;
+  color: $text-primary;
+  
+  &.lowRating {
+    background: #393b3c;
+  }
+}
+
+.ratingIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.meta {
+  display: flex;
+  gap: $spacing-lg;
+  align-items: center;
+}
+
+.metaItem {
+  font-size: $font-size-large;
+  color: rgba($text-primary, 0.7);
+}
+
+.title {
+  font-size: $text-h1;
+  line-height: $line-height-h1;
+  font-weight: 700;
+  color: $text-primary;
+  margin: $spacing-md 0 0;
+}
+
+.originalTitle {
+  font-size: $font-size-xlarge;
+  color: rgba($text-primary, 0.7);
+  margin: $spacing-sm 0 0;
+}
+
+.description {
+  font-size: $font-size-large;
+  line-height: 1.6;
+  color: rgba($text-primary, 0.8);
+  margin: $spacing-md 0 0;
+}
+
+.actions {
+  display: flex;
+  gap: $spacing-md;
+  align-items: center;
+  margin-top: $spacing-xl;
+}
+
+.trailerButton {
+  padding: $spacing-md $spacing-xl;
+  background: #67a5eb;
+  color: $text-primary;
+  border: none;
+  border-radius: 28px;
+  font-size: $font-size-large;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all $transition-normal;
+
+  &:hover:not(:disabled) {
+    background: lighten(#67a5eb, 10%);
+    transform: translateY(-2px);
+  }
+}
+
+.favoriteButton {
+  padding: $spacing-md;
+  width: 56px;
+  height: 56px;
+  background: $secondary-color;
+  border: none;
+  border-radius: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all $transition-normal;
+
+  &:hover {
+    background: lighten($secondary-color, 10%);
+    transform: translateY(-2px);
+  }
+
+  img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.detailsSection {
+  margin-top: $spacing-xxl;
+}
+
+.detailsTitle {
+  font-size: $text-h2;
+  line-height: $line-height-h2;
+  font-weight: 700;
+  margin-bottom: $spacing-lg;
+  color: $text-primary;
+}
+
+.detailsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: $spacing-md;
+}
+
+.detailItem {
+  display: flex;
+  justify-content: space-between;
+  padding: $spacing-sm 0;
+  border-bottom: 1px solid rgba($text-primary, 0.1);
+}
+
+.detailLabel {
+  color: rgba($text-primary, 0.7);
+  font-weight: 400;
+}
+
+.detailValue {
+  color: $text-primary;
+  font-weight: 600;
+  text-align: right;
+}
+
+.castTitle {
+  font-size: $font-size-xlarge;
+  font-weight: 700;
+  margin-bottom: $spacing-md;
+  color: $text-primary;
+}
+
+.castList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+}
+
+.castItem {
+  padding: $spacing-sm $spacing-md;
+  background: rgba($text-primary, 0.1);
+  border-radius: 20px;
+  font-size: $font-size-small;
+  color: $text-primary;
+}

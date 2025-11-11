@@ -7,6 +7,8 @@ import { GenresPage } from '@pages/genres';
 import { ErrorBoundary } from '@shared/ui/ErrorBoundary';
 import { LoadingSpinner } from '@shared/ui/LoadingSpinner';
 import '@shared/styles/global.scss';
+import { GenreMoviesPage } from '@pages/genre-movies';
+import { MoviePage } from '@pages/movie';
 
 function App() {
   return (
@@ -19,8 +21,8 @@ function App() {
               <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/genres" element={<GenresPage />} />
-                <Route path="/genres/:id" element={<div>Страница жанра</div>} />
-                <Route path="/movie/:id" element={<div>Страница фильма</div>} />
+                <Route path="/genres/:id" element={<GenreMoviesPage />} />
+                <Route path="/movie/:id" element={<MoviePage />} />
               </Routes>
             </div>
           </main>

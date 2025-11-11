@@ -1,22 +1,27 @@
 import { FC } from "react";
+import { useNavigate } from 'react-router-dom';
 import { Movie } from "@shared/types/movie";
 import styles from "./MovieCard.module.scss";
 
 interface MovieCardProps {
   movie: Movie;
   number: number;
-  onClick: (movieId: number) => void;
+  onClick?: (movieId: number) => void;
 }
 
 const DOUBLE_DIGIT_THRESHOLD = 10;
 
 export const MovieCard: FC<MovieCardProps> = ({ movie, number, onClick }) => {
+  const navigate = useNavigate();
+
   const handleClick = () => {
-    onClick(movie.id);
+    navigate(`/movie/${movie.id}`);
+    if (onClick) {
+      onClick(movie.id);
+    }
   };
 
   const isDoubleDigit = number >= DOUBLE_DIGIT_THRESHOLD;
-
 
   return (
     <div className={styles.movieCard} onClick={handleClick}>
