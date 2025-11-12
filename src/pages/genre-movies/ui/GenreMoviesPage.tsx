@@ -9,36 +9,27 @@ import { fetchGenreById } from '@shared/api/genreApi';
 import { Genre } from '@shared/types/genre';
 import styles from './GenreMoviesPage.module.scss';
 import ChevronIcon from "@shared/assets/icons/chevron.svg";
+import { useGenre } from '../hooks/useGenre';
 
 export const GenreMoviesPage: FC = () => {
   const { id } = useParams<{ id: string }>();
-  const genreId = parseInt(id || '0');
+  
+  if (!id || isNaN(parseInt(id))) {
+    return <ErrorState error="Некорректный идентификатор жанра" />;
+  }
+
+  const genreId = parseInt(id);
   
   const { movies, isLoading, error, hasMore, loadMore, refetch } = useGenreMovies(genreId);
-  const [genre, setGenre] = useState<Genre | null>(null);
-  const [genreLoading, setGenreLoading] = useState(true);
-
-  useEffect(() => {
-    const loadGenre = async () => {
-      if (genreId) {
-        try {
-          setGenreLoading(true);
-          const genreData = await fetchGenreById(genreId);
-          setGenre(genreData);
-        } catch (err) {
-          console.error('Ошибка загрузки жанра:', err);
-        } finally {
-          setGenreLoading(false);
-        }
-      }
-    };
-
-    loadGenre();
-  }, [genreId]);
+  const { genre, isLoading: genreLoading, error: genreError } = useGenre(genreId);
 
   const handleMovieClick = (movieId: number) => {
     console.log('Клик по фильму:', movieId);
   };
+
+  if (isLoading) {
+    return <LoadingSpinner message="Загружаем фильмы..." />;
+  }
 
   if (error) {
     return <ErrorState error={error} onRetry={refetch} />;

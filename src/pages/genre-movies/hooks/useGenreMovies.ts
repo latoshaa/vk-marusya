@@ -9,10 +9,16 @@ export const useGenreMovies = (genreId: number) => {
   const [displayedMovies, setDisplayedMovies] = useState<Movie[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [hasMore, setHasMore] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
 
+  const hasMore = currentPage * MOVIES_PER_PAGE < allMovies.length;
+
   const loadAllMovies = useCallback(async () => {
+    if (!genreId) {
+      setIsLoading(false);
+      return;
+    }
+
     try {
       setIsLoading(true);
       setError(null);
@@ -21,7 +27,6 @@ export const useGenreMovies = (genreId: number) => {
       setAllMovies(moviesData);
 
       setDisplayedMovies(moviesData.slice(0, MOVIES_PER_PAGE));
-      setHasMore(moviesData.length > MOVIES_PER_PAGE);
       setCurrentPage(1);
       
     } catch (err) {
@@ -33,25 +38,19 @@ export const useGenreMovies = (genreId: number) => {
   }, [genreId]);
 
   const loadMore = useCallback(() => {
-    if (!isLoading && hasMore) {
+    if (!hasMore || isLoading) return;
+
       const nextPage = currentPage + 1;
-      const startIndex = (nextPage - 1) * MOVIES_PER_PAGE;
-      const endIndex = startIndex + MOVIES_PER_PAGE;
+      const startIndex = 0;
+      const endIndex = nextPage * MOVIES_PER_PAGE;
       
-      const nextMovies = allMovies.slice(startIndex, endIndex);
-      setDisplayedMovies(prev => [...prev, ...nextMovies]);
+      setDisplayedMovies(allMovies.slice(startIndex, endIndex));
       setCurrentPage(nextPage);
-      setHasMore(endIndex < allMovies.length);
-    }
   }, [isLoading, hasMore, currentPage, allMovies]);
 
   useEffect(() => {
-    setAllMovies([]);
-    setDisplayedMovies([]);
-    setCurrentPage(1);
-    setHasMore(true);
     loadAllMovies();
-  }, [genreId, loadAllMovies]);
+  }, [loadAllMovies]);
 
   return { 
     movies: displayedMovies, 

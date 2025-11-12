@@ -7,13 +7,18 @@ import styles from './MoviePage.module.scss';
 import StarIcon from "@shared/assets/icons/star.svg";
 import HeartIcon from "@shared/assets/icons/heart.svg";
 import HeartActiveIcon from "@shared/assets/icons/heartActive.svg";
+import { MovieDetailsSection } from './components/MovieDetailsSection';
 
 const MIN_RATING = 7.0;
 const MINUTES_IN_HOUR = 60;
 
 export const MoviePage: FC = () => {
   const { id } = useParams<{ id: string }>();
-  const movieId = parseInt(id || '0');
+  if (!id || isNaN(parseInt(id))) {
+    return <ErrorState error="Некорректный идентификатор фильма" />;
+  }
+
+  const movieId = parseInt(id);
   const { movie, isLoading, error, refetch } = useMovie(movieId);
   const [isFavorite, setIsFavorite] = useState(false);
 
@@ -107,35 +112,14 @@ export const MoviePage: FC = () => {
             </div>
           </div>
 
-          <div className={styles.detailsSection}>
-            <h2 className={styles.detailsTitle}>О фильме</h2>
-            <div className={styles.detailsGrid}>
-              <div className={styles.detailItem}>
-                <span className={styles.detailLabel}>Язык оригинала</span>
-                <span className={styles.detailValue}>{getSafeValue(movie.language)}</span>
-              </div>
-              <div className={styles.detailItem}>
-                <span className={styles.detailLabel}>Бюджет</span>
-                <span className={styles.detailValue}>{getSafeValue(movie.budget)}</span>
-              </div>
-              <div className={styles.detailItem}>
-                <span className={styles.detailLabel}>Выручка</span>
-                <span className={styles.detailValue}>{getSafeValue(movie.revenue)}</span>
-              </div>
-              <div className={styles.detailItem}>
-                <span className={styles.detailLabel}>Режиссёр</span>
-                <span className={styles.detailValue}>{getSafeValue(movie.director)}</span>
-              </div>
-              <div className={styles.detailItem}>
-                <span className={styles.detailLabel}>Продюсер</span>
-                <span className={styles.detailValue}>{getSafeValue(movie.production)}</span>
-              </div>
-              <div className={styles.detailItem}>
-                <span className={styles.detailLabel}>Награды</span>
-                <span className={styles.detailValue}>{getSafeValue(movie.awardsSummary)}</span>
-              </div>
-            </div>
-          </div>
+          <MovieDetailsSection
+            language={getSafeValue(movie.language)}
+            budget={getSafeValue(movie.budget)}
+            revenue={getSafeValue(movie.revenue)}
+            director={getSafeValue(movie.director)}
+            production={getSafeValue(movie.production)}
+            awardsSummary={getSafeValue(movie.awardsSummary)}
+          />
 
           {getSafeArray(movie.cast).length > 0 && (
             <div className={styles.castSection}>

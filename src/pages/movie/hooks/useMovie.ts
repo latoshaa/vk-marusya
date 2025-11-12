@@ -8,6 +8,11 @@ export const useMovie = (movieId: number) => {
   const [error, setError] = useState<string | null>(null);
 
   const loadMovie = async () => {
+    if (!movieId) {
+      setIsLoading(false)
+      setError('Неверный идентификатор фильма');
+      return;
+    }
     try {
       setIsLoading(true);
       setError(null);
@@ -22,9 +27,7 @@ export const useMovie = (movieId: number) => {
   };
 
   useEffect(() => {
-    if (movieId) {
       loadMovie();
-    }
   }, [movieId]);
 
   return { movie, isLoading, error, refetch: loadMovie };
