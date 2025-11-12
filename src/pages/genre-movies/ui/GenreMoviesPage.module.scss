@@ -1,0 +1,85 @@
+@use '@shared/styles/variables' as *;
+
+.genreMoviesPage {
+  flex: 1;
+  padding: $spacing-xl 0;
+}
+
+.header {
+  margin-bottom: $spacing-xl;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.backLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: all $transition-normal;
+  
+  &:hover {
+    background: rgba($text-primary, 0.1);
+    transform: translateX(-2px);
+  }
+}
+
+.chevronIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.title {
+  font-size: $text-h1;
+  line-height: $line-height-h1;
+  color: $text-primary;
+  margin: 0;
+}
+
+.moviesGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 224px);
+  gap: $spacing-xl;
+  justify-content: center;
+  margin-bottom: $spacing-xl;
+}
+
+.loadMoreContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: $spacing-xl;
+}
+
+.loadMoreButton {
+  padding: $spacing-md $spacing-xxl;
+  background: $primary-color;
+  color: $text-primary;
+  border: none;
+  border-radius: 28px;
+  font-size: $font-size-large;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all $transition-normal;
+
+  &:hover:not(:disabled) {
+    background: lighten($primary-color, 10%);
+    transform: translateY(-2px);
+  }
+
+  &:disabled {
+    opacity: $disabled-opacity;
+    cursor: not-allowed;
+  }
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  padding: $spacing-xl;
+}
