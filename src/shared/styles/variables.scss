@@ -9,6 +9,13 @@ $accent-color: #FFC107;
 $success-color: #308e21;
 $warning-color: #ffc107;
 
+// Новые цвета для авторизации
+$white: #FFFFFF;
+$black: #000000;
+$light-gray: rgba(0, 0, 0, 0.4);
+$blue: #67A5EB;
+$vk-blue: #0077FF;
+
 // Градиент для фона
 $background-gradient: linear-gradient(to bottom, #67A5EB, #A393F5, white), linear-gradient(to bottom, #272424, #413f3f);
 
@@ -16,6 +23,8 @@ $background-gradient: linear-gradient(to bottom, #67A5EB, #A393F5, white), linea
 $container-max-width: 1200px;
 $border-radius: 8px;
 $border-radius-large: 16px;
+$border-radius-xl: 24px;
+$border-radius-xxl: 28px;
 
 // Шрифты
 $font-family: "Play", sans-serif;
@@ -24,7 +33,6 @@ $font-size-small: 14px;
 $font-size-large: 18px;
 $font-size-xlarge: 24px;
 $font-size-xxlarge: 32px;
-
 // Отступы
 $spacing-xs: 4px;
 $spacing-sm: 8px;
@@ -32,15 +40,24 @@ $spacing-md: 16px;
 $spacing-lg: 24px;
 $spacing-xl: 32px;
 $spacing-xxl: 48px;
+$spacing-xxxl: 64px;
 
 // Анимации
 $transition-fast: 0.2s ease;
 $transition-normal: 0.3s ease;
 $disabled-opacity: 0.5;
-
 // Текст
 $text-h1: 48px;
 $line-height-h1: 56px;
 $text-h2: 40px;
 $line-height-h2: 48px;
+$text-h3: 24px;
+$line-height-h3: 32px;
+
+// Размеры иконок
+$icon-size-sm: 16px;
+$icon-size-md: 20px;
+$icon-size-lg: 24px;
+$icon-size-xl: 32px;
+$icon-size-xxl: 48px;
 
