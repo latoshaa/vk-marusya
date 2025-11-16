@@ -1,11 +1,33 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import styles from './Header.module.scss';
 import MarusyaLogo from "@shared/assets/icons/marusya-white.svg";
 import SearchIcon from "@shared/assets/icons/search.svg";
+import { useAuth } from '@shared/lib/AuthContext';
+import { AuthModal } from '@features/auth/ui/AuthModal';
 
 export const Header: FC = () => {
+    const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const { user, isAuthenticated, logout } = useAuth();
+
+  const handleLoginClick = () => {
+    setIsAuthModalOpen(true);
+  };
+
+  const handleLogoutClick = async () => {
+    try {
+      await logout();
+    } catch (error) {
+      console.error('Logout error:', error);
+    }
+  };
+
+  const closeAuthModal = () => {
+    setIsAuthModalOpen(false);
+  };
+
   return (
+    <>
     <header className={styles.header}>
       <div className={styles.wrapper}>
         <div className={styles.logo}>
@@ -54,10 +76,33 @@ export const Header: FC = () => {
           </div>
         </div>
 
-        <Link to="/login" className={`${styles.navLink} ${styles.loginLink}`}>
-          Войти
-        </Link>
-      </div>
-    </header>
+          {isAuthenticated && user ? (
+            <div className={styles.userSection}>
+              <Link to="/profile" className={styles.userLink}>
+                {user.surname}
+              </Link>
+              <button 
+                onClick={handleLogoutClick}
+                className={styles.logoutButton}
+              >
+                Выйти
+              </button>
+            </div>
+          ) : (
+            <button 
+              onClick={handleLoginClick}
+              className={`${styles.navLink} ${styles.loginLink}`}
+            >
+              Войти
+            </button>
+          )}
+        </div>
+      </header>
+
+      <AuthModal 
+        isOpen={isAuthModalOpen}
+        onClose={closeAuthModal}
+      />
+    </>
   );
 };
