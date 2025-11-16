@@ -1,6 +1,7 @@
 import { FC, useState } from 'react';
 import { Movie } from '@shared/types/movie';
 import { MIN_RATING, MINUTES_IN_HOUR } from '../constants';
+import { useAuthGuard } from '@features/auth/hooks/useAuthGuard';
 import styles from '../Hero.module.scss';
 import HeartIcon from "@shared/assets/icons/heart.svg";
 import HeartActiveIcon from "@shared/assets/icons/heartActive.svg";
@@ -15,19 +16,32 @@ interface HeroContentProps {
 
 export const HeroContent: FC<HeroContentProps> = ({ movie, onGetRandomMovie }) => {
   const [isFavorite, setIsFavorite] = useState(false);
+  const { requireAuth } = useAuthGuard();
 
   const toggleFavorite = () => {
-    setIsFavorite(!isFavorite);
+    requireAuth(() => {
+      setIsFavorite(!isFavorite);
+    });
   };
 
-  const formatRuntime = (minutes: number): string => {
+  const formatRuntime = (minutes: number | undefined): string => {
+    if (!minutes) return 'Не указано';
     const hours = Math.floor(minutes / MINUTES_IN_HOUR);
     const mins = minutes % MINUTES_IN_HOUR;
     return `${hours} ч ${mins} мин`;
   };
 
-  const getRatingClass = (rating: number): string => {
-    return rating < MIN_RATING ? styles.lowRating : '';
+  const getRatingClass = (rating: number | undefined): string => {
+  const ratingValue = rating || 0;
+  return (ratingValue < MIN_RATING ? styles.lowRating : '') as string;
+};
+
+  const getSafeValue = (value: string | undefined): string => {
+    return value || 'Не указано';
+  };
+
+  const getSafeNumber = (value: number | undefined): string => {
+    return value ? value.toString() : 'Не указано';
   };
 
   return (
@@ -35,18 +49,18 @@ export const HeroContent: FC<HeroContentProps> = ({ movie, onGetRandomMovie }) =
       <div className={styles.heroContainer}>
         <div className={styles.infoSection}>
           <div className={styles.ratingRow}>
-            <div className={`${styles.rating} ${getRatingClass(movie.tmdbRating || 0)}`}>
+            <div className={`${styles.rating} ${getRatingClass(movie.tmdbRating)}`}>
               <img src={StarIcon} alt="Рейтинг" className={styles.ratingIcon} />
-              {movie.tmdbRating?.toFixed(1) || 'N/A'}
+              {movie.tmdbRating ? movie.tmdbRating.toFixed(1) : 'N/A'}
             </div>
             <div className={styles.meta}>
-              <span className={styles.metaItem}>{movie.releaseYear}</span>
+              <span className={styles.metaItem}>{getSafeNumber(movie.releaseYear)}</span>
               <span className={styles.metaItem}>{movie.genres?.[0] || 'Жанр'}</span>
               <span className={styles.metaItem}>{formatRuntime(movie.runtime)}</span>
             </div>
           </div>
-          <h1 className={styles.title}>{movie.title}</h1>
-          <p className={styles.description}>{movie.plot}</p>
+          <h1 className={styles.title}>{getSafeValue(movie.title)}</h1>
+          <p className={styles.description}>{getSafeValue(movie.plot)}</p>
           <div className={styles.actions}>
             <button className={styles.trailerButton}>
               Трейлер
@@ -74,8 +88,8 @@ export const HeroContent: FC<HeroContentProps> = ({ movie, onGetRandomMovie }) =
 
         <div className={styles.posterSection}>
           <img
-            src={movie.posterUrl}
-            alt={movie.title}
+            src={movie.posterUrl || ''}
+            alt={movie.title || 'Фильм'}
             className={styles.poster}
           />
         </div>
