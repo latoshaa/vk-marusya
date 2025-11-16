@@ -140,3 +140,48 @@
     color: rgba(255, 255, 255, 0.5);
   }
 }
+
+.userSection {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.userLink {
+  font-family: "Play";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 8px 0px;
+  
+  &:hover {
+    color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+.logoutButton {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+  }
+}
+
+.loginLink {
+  background: none;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}

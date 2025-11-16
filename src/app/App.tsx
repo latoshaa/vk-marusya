@@ -9,9 +9,11 @@ import { LoadingSpinner } from '@shared/ui/LoadingSpinner';
 import '@shared/styles/global.scss';
 import { GenreMoviesPage } from '@pages/genre-movies';
 import { MoviePage } from '@pages/movie';
+import { AuthProvider } from '@/shared/lib/AuthContext';
 
 function App() {
   return (
+    <AuthProvider> 
     <ErrorBoundary>
       <Router>
         <div className="app">
@@ -30,6 +32,7 @@ function App() {
         </div>
       </Router>
     </ErrorBoundary>
+    </AuthProvider>
   );
 }
 
